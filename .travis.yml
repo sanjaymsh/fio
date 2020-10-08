@@ -8,6 +8,7 @@ compiler:
 arch:
   - amd64
   - arm64
+  - ppc64le
 env:
   global:
     - MAKEFLAGS="-j 2"
@@ -18,6 +19,12 @@ matrix:
       arch: amd64
       env: BUILD_ARCH="x86" # Only do the gcc x86 build to reduce clutter
     # Default xcode image
+    - os: linux
+      compiler: gcc
+      arch: ppc64le
+    - os: linux
+      compiler: clang 
+      arch: ppc64le
     - os: osx
       compiler: clang # Workaround travis setting CC=["clang", "gcc"]
       arch: amd64
